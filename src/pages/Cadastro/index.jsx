@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import api from "../../services/api";
+import apiClientesRestaurantes from "../../services/apiClientes";
 
 
 function Cadastro() {
@@ -37,7 +37,7 @@ function Cadastro() {
 
 
 
-      const response = await api.post('/users/register', {
+      const response = await apiClientesRestaurantes.post('/users/register', {
         name,
         email,
         password

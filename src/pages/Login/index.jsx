@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import api from "../../services/api";
+import apiClientesRestaurantes from "../../services/apiClientes";
 
 
 function Login() {
@@ -30,7 +30,7 @@ function Login() {
                 return
             }
             //criar ima variavel para receber a resposta do back-end e pegar o token que é gerado no back-end qunadl o usuário faz login esse token é enviado para o front-end e armazenado no localStorage dentro da variavel data
-            const  {data}  = await api.post('/login', {
+            const  {data}  = await apiClientesRestaurantes.post('/login', {
                 email,
                 password
             });
@@ -52,6 +52,7 @@ function Login() {
     }
 
     return (
+        
         <div className="flex flex-col justify-center items-center h-screen bg-gray-100 overflow-y-hidden " >
             <h1 className="font-bold text-2xl tracking-[.10em] text-red-800">LOGIN</h1>
             <form onSubmit={handleSubmit}
