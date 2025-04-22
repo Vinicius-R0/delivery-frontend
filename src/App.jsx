@@ -2,6 +2,7 @@ import React, {use, useEffect} from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Cadastro from "./pages/Cadastro"
 import Login from "./pages/Login"
+import Register from "./pages/Register"
 
 import { setAuthToken } from "./services/apiClientes"
 function App() {
@@ -21,6 +22,7 @@ function App() {
       <Routes>
         <Route path='/users/register' element={<Cadastro />}/>
         <Route path='/login' element={<Login />}/>
+        <Route path='/register_dishes' element={<Register />}/>
       </Routes>
     </BrowserRouter>
   )
