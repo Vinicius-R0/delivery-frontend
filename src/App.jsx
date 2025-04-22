@@ -2,7 +2,7 @@ import React, {use, useEffect} from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Cadastro from "./pages/Cadastro"
 import Login from "./pages/Login"
-import Register from "./pages/Register"
+import Register from "./pages/Register_Dish"
 
 import { setAuthToken } from "./services/apiClientes"
 function App() {
