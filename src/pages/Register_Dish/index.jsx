@@ -1,9 +1,38 @@
-import { useEffect, useState } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import './style.css'
-import api from '../../services/api-cardapio'
+import apiDishes from '../../services/api-cardapio'
 
 function Register() {
 
+  const nameRef = useRef();
+  const categoryRef = useRef();
+  const priceRef = useRef();
+
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    try {
+      
+      const name = nameRef.current.value;
+      const category = categoryRef.current.value;
+      const price = priceRef.current.value;
+
+      const response = await apiDishes.post('/register_dishes', {
+        name,
+        category,
+        price
+      });
+
+
+
+      alert("Prato cadastrado com sucesso")
+    
+
+
+    } catch (error) {
+      console.error(error);
+
+    }
   const [dishes, setDishes] = useState([])
 
   async function getDishes() {
@@ -15,14 +44,16 @@ function Register() {
     getDishes()
   }, [])
 
+  }
+
   return (
     <>
       <div className='container'>
-        <form action="">
+        <form onSubmit={handleSubmit}>
           <h1>Cadastro de Pratos</h1>
-          <input type="text" name="name" placeholder='Nome'/>
-          <input type="text" name="category" placeholder='Categoria'/>
-          <input type="number" name="price" placeholder='Preço'/>
+          <input ref={nameRef} type="text" name="name" placeholder='Nome'/>
+          <input ref={categoryRef} type="text" name="category" placeholder='Categoria'/>
+          <input ref={priceRef} type="number" name="price" placeholder='Preço'/>
           <button type="button">Cadastrar</button>
         </form>
 
